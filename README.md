@@ -50,3 +50,5 @@ To add a custom directory to your theme-gem, please edit the regexp in `lab-them
 
 The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
+=======
+# jekyll-lab-theme
