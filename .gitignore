@@ -1,2 +1,8 @@
 _site/**
 .jekyll-cache/**
+_persons/**.md
+_projects/**.md
+_publications/**.md
+_theses/**.md
+Gemfile.lock
+*.gem
