@@ -1,0 +1,13 @@
+---
+layout: default
+permalink: /persons/
+---
+<div id="main" role="main">
+    <h1>Our Team:</h1>
+    <ul>
+        {% assign teamMembers = site.persons | where_exp: 'item', ' item.orcData !=  nil' %}
+        {% for person in teamMembers %}
+            <li><a href="{{ person.url }}">{{ person.familyName }} {{ person.givenNames }}</a></li>
+        {% endfor %}
+    </ul>
+</div>

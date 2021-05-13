@@ -1,0 +1,33 @@
+collections:
+  persons:
+    output: true
+    permalink: /:collection/:path/
+  publications:
+    output: false
+  theses:
+    output: false
+  projects:
+    output: true
+    permalink: /:collection/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: persons # select all person pages
+    values:
+      layout: person
+  - scope:
+      path: ""
+      type: publications # select all person pages
+    values:
+      layout: publication
+  - scope:
+      path: ""
+      type: projects # select all person pages
+    values:
+      layout: project
+  - scope:
+      path: ""
+      type: theses # select all person pages
+    values:
+      layout: thesis
