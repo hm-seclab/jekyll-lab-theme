@@ -1,0 +1,9 @@
+---
+layout: default
+permalink: /persons/
+---
+<ul>
+    {% for person in site.persons %}
+    <li><a href="{{ person.url }}">{{ person.familyName }} {{ person.givenNames }}</a></li>
+    {% endfor %}
+</ul>
