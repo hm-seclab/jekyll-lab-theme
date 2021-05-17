@@ -1,9 +1,10 @@
 ---
 layout: default
-permalink: /persons/
+permalink: /team/
 ---
+<h1>Our Team</h1>
 <ul>
-    {% for person in site.persons %}
+    {% for person in site.team %}
     <li><a href="{{ person.url }}">{{ person.familyName }} {{ person.givenNames }}</a></li>
     {% endfor %}
 </ul>

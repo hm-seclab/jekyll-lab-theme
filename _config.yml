@@ -1,5 +1,5 @@
 collections:
-  persons:
+  team:
     output: true
     permalink: /:collection/:path/
   publications:
@@ -13,7 +13,7 @@ collections:
 defaults:
   - scope:
       path: ""
-      type: persons # select all person pages
+      type: team # select all person pages
     values:
       layout: person
   - scope:
