@@ -1,24 +1,33 @@
 ---
 layout: default
 ---
-<div id="main" class="orc" role="main">
-    <h1>{{ page.orcData['person']['name']['given-names']['value'] }} {{
-        page.orcData['person']['name']['family-name']['value'] }} </h1>
-    <div class="person">
-        {% if page.orcData['person']['researcher-urls'] %}
+<article class="prose max-w-none">
+    <h1 class="title-font mb-4 font-medium">
+        {{ page.orcData['person']['name']['given-names']['value'] }} {{
+        page.orcData['person']['name']['family-name']['value'] }}
+    </h1>
+    {% if page.orcData['person']['researcher-urls']['researcher-url'].size > 0 %}
 
-        <ul>
-            {% for url in page.orcData['person']['researcher-urls']['researcher-url'] %}
-            <li><a href="{{ url['url']['value'] }}">{{ url['url-name'] }}</a></li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+    <ul>
+        {% for url in page.orcData['person']['researcher-urls']['researcher-url'] %}
+        <li><a href="{{ url['url']['value'] }}">{{ url['url-name'] }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+    {% if page.orcData['activities-summary']['employments']['employment-summary'].size > 0 %}
+    <h2>Employments:</h2>
+    
+    {% for item in page.orcData['activities-summary']['employments']['employment-summary'] %}
+        <div>
+            {% assign end = "today" %}
+            {% if item['end-date'] %}
+            {% assign end = (item['end-date']['month']['value'] | append: "/" | append: item['end-date']['year']['value']) %}
+            {% endif %}
+            
+            {{ item['organization']['name'] }} ( {{ item['start-date']['month']['value'] }}/{{ item['start-date']['year']['value'] }} - {{ end }} )
+        </div>
+        {% endfor %}
 
-        {% if page.orcData['activities-summary']['employments'] %}
-        <h2>Employments:</h2>
-        <ul>
-
-        </ul>
-        {% endif %}
-    </div>
-</div>
+    {% endif %}
+</article>

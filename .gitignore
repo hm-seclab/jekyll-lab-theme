@@ -6,3 +6,4 @@ _publications/**.md
 _theses/**.md
 Gemfile.lock
 *.gem
+node_modules/**

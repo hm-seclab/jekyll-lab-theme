@@ -1,9 +1,20 @@
 ---
 layout: default
 permalink: /projects/
+title: Projects
 ---
-<ul>
+<div class="max-w-none">
+    <div class="prose">
+        <h1 class="title-font mb-4 font-medium">Current Projects</h1>
+    </div>
+    <div class="grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 gap-4">
     {% for project in site.projects %}
-    <li><a href="{{ project.url }}">{{ project.name }}</a></li>
+    <div class="shadow-lg flex-none rounded-lg p-4">
+        <h2 class="font-semibold text-2xl"><a href="{{ project.url }}">{{ project.title }}</a></h2>
+        <p>{{ project.short-description }}</p>
+        <a class="underline flex justify-end mt-4" href="{{ project.url }}">Read more ...</a>
+    </div>
+
     {% endfor %}
-</ul>
+</div>
+</div>

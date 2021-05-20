@@ -18,6 +18,7 @@ Jekyll::Hooks.register :site, :post_read do |site|
                 person.data['orcData'] = orcData 
                 person.data['familyName'] = orcData['person']['name']['family-name']['value']
                 person.data['givenNames'] = orcData['person']['name']['given-names']['value']
+                person.data['title'] = "#{person.data['familyName']} #{person.data['givenNames']}"
             end
         end
     end

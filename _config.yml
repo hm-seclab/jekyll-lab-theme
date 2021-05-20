@@ -1,4 +1,3 @@
-
 title: Lab Theme
 
 collections:
@@ -24,19 +23,36 @@ defaults:
       type: projects # select all project pages
     values:
       layout: project
-      
+
 # Markdown and syntax highlight
 markdown: kramdown
 highlighter: rouge
-highlight_theme: github  # https://github.com/jwarby/jekyll-pygments-themes
+highlight_theme: github # https://github.com/jwarby/jekyll-pygments-themes
 kramdown:
   input: GFM
   syntax_highlighter_opts:
-    css_class: 'highlight'
+    css_class: "highlight"
     span:
       line_numbers: false
     block:
       line_numbers: false
       start_line: 1
 
-include: ['_pages']
+include: ["_pages"]
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-postcss
+  
+exclude:
+  - node_modules/
+  - package-lock.json
+  - yarn.lock
+  - postcss.config.js
+  - tailwind.config.js
+  - purgecss.config.js
+  - package.json
+  - Dockerfile
+  - Dockerfile.dev
+  - docker-compose.yml
+  - docker-compose.dev.yml
