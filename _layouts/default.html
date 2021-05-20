@@ -4,9 +4,9 @@
   <head>
     {%- include head.html -%}
   </head>
-  <body>
+  <body class="flex flex-col min-h-screen ">
     {%- include navbar.html -%}
-    <div class="container px-5 py-5 mx-auto">
+    <div class="container flex-grow px-5 py-5 mx-auto">
       {{ content }}
     </div>
     {%- include footer.html -%}
