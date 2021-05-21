@@ -1,0 +1,6 @@
+{% assign end = "today" %}
+{% if item['end-date'] %}
+{% assign end = (item['end-date']['month']['value'] | append: "/" | append: item['end-date']['year']['value']) %}
+{% endif %}
+
+{{ item['organization']['name'] }} ({{ item['start-date']['month']['value'] }}/{{ item['start-date']['year']['value'] }} - {{ end }}){% if item['role-title'] %}: {{ item['role-title'] }} {% endif %}

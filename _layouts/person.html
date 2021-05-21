@@ -20,14 +20,20 @@ layout: default
     
     {% for item in page.orcData['activities-summary']['employments']['employment-summary'] %}
         <div>
-            {% assign end = "today" %}
-            {% if item['end-date'] %}
-            {% assign end = (item['end-date']['month']['value'] | append: "/" | append: item['end-date']['year']['value']) %}
-            {% endif %}
-            
-            {{ item['organization']['name'] }} ( {{ item['start-date']['month']['value'] }}/{{ item['start-date']['year']['value'] }} - {{ end }} )
+            {% include activity.html item=item %}
         </div>
-        {% endfor %}
+    {% endfor %}
+
+    {% endif %}
+    {% if page.orcData['activities-summary']['educations']['education-summary'].size > 0 %}
+    <h2>Education:</h2>
+    
+
+    {% for item in page.orcData['activities-summary']['educations']['education-summary'] %}
+        <div>           
+            {% include activity.html item=item %}
+        </div>
+    {% endfor %}
 
     {% endif %}
 </article>
