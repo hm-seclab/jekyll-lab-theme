@@ -6,8 +6,11 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
     apt install nodejs
 
 WORKDIR /app
+COPY package.json Gemfile ./
+RUN  npm install && bundle install 
+ARG CACHEBUST=1
 COPY . .
-RUN  npm install && bundle install && JEKYLL_ENV=production bundle exec jekyll build
+RUN JEKYLL_ENV=production bundle exec jekyll build
 
 FROM nginx 
 
