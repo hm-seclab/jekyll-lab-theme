@@ -1,54 +1,35 @@
-# lab-theme
+# Jekyll Lab-Template with ORCID Integration
 
-Welcome to your new Jekyll theme! In this directory, you'll find the files you need to be able to package up your theme into a gem. Put your layouts in `_layouts`, your includes in `_includes`, your sass files in `_sass` and any other assets in `assets`.
-
-To experiment with this code, add some sample content and run `bundle exec jekyll serve` – this directory is setup just like a Jekyll site!
-
-TODO: Delete this and the text above, and describe your gem
-
-
-## Installation
-
-Add this line to your Jekyll site's `Gemfile`:
-
-```ruby
-gem "lab-theme"
-```
-
-And add this line to your Jekyll site's `_config.yml`:
-
-```yaml
-theme: lab-theme
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install lab-theme
+This repo provides a jekyll page template for lab teams. As a special feature it comes completely without JavaScript, Trackers, Cookies and is able to generate several pages automatically based on the commonly used ORCID. Instead of maintaining the team & publication pages manually you only need to specify the ORCID and start the jekyll server or build the page.
 
 ## Usage
 
-TODO: Write usage instructions here. Describe your available layouts, includes, sass and/or assets.
+### Projects
 
-## Contributing
+To add a new project you must create a new markdown file in the `_projects` folder. This file should contain the basic information about the project and may define some properties in the frontmatter like a project title, a description and an image.
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/hello. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+```markdown
+---
+title: Another project
+description: We are working on a a second project!
+image: /assets/img/project.jpeg
+---
+```
+
+### Team
+
+To add a new team member simply create new markdown file in `_team` containing the orcid in the jekyll frontmatter. The further data will be fetched from orcid.
+
+```markdown
+---
+orcid: 0000-0000-0000-0000
+---
+```
 
 ## Development
 
-To set up your environment to develop this theme, run `bundle install`.
-
-Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
-
-When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
-To add a custom directory to your theme-gem, please edit the regexp in `lab-theme.gemspec` accordingly.
+To simplify the development, especially when using Windows, a development environment using docker is provided. To start the dev server you only need to start the `docker-compose.dev.yml` using `docker-compose -f docker-compose.dev.yml up -d`. Afterwards the dev server is available on [port 4000](http://localhost:4000), so you can change your page and check the effect in the browser.
 
 ## License
 
 The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-=======
-# jekyll-lab-theme
