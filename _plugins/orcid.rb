@@ -2,7 +2,6 @@ require 'net/http'
 require 'json'
 
 Jekyll::Hooks.register :site, :post_read do |site|
-
     if site.collections['team'] 
         site.collections['team'].docs.each do |person|
             if person.data['orcid']                
@@ -18,7 +17,11 @@ Jekyll::Hooks.register :site, :post_read do |site|
                 person.data['orcData'] = orcData 
                 person.data['familyName'] = orcData['person']['name']['family-name']['value']
                 person.data['givenNames'] = orcData['person']['name']['given-names']['value']
-                person.data['title'] = "#{person.data['familyName']} #{person.data['givenNames']}"
+                person.data['title'] = "#{person.data['familyName']} #{person.data['givenNames']}"                
+                image = site.static_files.find{|x| x.basename == person.data['orcid'] && x.extname.match(/\.(jpe?g|png)/i)}
+                if image
+                    person.data['image'] = image.relative_path 
+                end
             end
         end
     end
