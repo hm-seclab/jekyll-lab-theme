@@ -4,6 +4,5 @@ _team/**.md
 _projects/**.md
 _publications/**.md
 _theses/**.md
-Gemfile.lock
 *.gem
 node_modules/**

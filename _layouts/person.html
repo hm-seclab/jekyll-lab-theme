@@ -40,13 +40,11 @@ layout: default
     {% if page.orcData['activities-summary']['works']['group'].size > 0 %}    
     <h2>Works:</h2>
     
-    {% for group in page.orcData['activities-summary']['works']['group'] %}
+    {% for item in page.orcData['activities-summary']['works']['group'] %}
 
-    {% for item in group['work-summary'] %}
-        <div>           
+        <div>      
             {% include work.html item=item %}
         </div>
-    {% endfor %}
 
     {% endfor %}
 
