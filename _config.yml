@@ -56,3 +56,9 @@ exclude:
   - Dockerfile.dev
   - docker-compose.yml
   - docker-compose.dev.yml
+
+team-roles:
+  - Professor
+  - Phd Student
+  - Student
+  - Alumni

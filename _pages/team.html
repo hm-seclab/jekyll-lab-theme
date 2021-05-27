@@ -6,20 +6,10 @@ title: Team
 <div class="prose max-w-none">
     <h1 class="title-font mb-4 font-medium">Our Team</h1>
 </div>
-<div class="grid grid-cols-1 xl:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-4 py-4">
-    {% assign sortedTeam = site.team | sort: 'familyName' %}
-    {% for person in sortedTeam %}
-    <a class="text-center" href="{{ person.url }}">
-        {% if person.image %}
-        <img class="object-contain rounded-lg h-52 w-52 m-auto" src="{{ person.image }}">
-        {% else %}
-        <div class="h-52 w-52 flex rounded-lg items-center m-auto justify-center bg-gray-200">
-            <span>
-                Sorry. <br/>No image available.
-            </span>
-        </div>
-        {% endif %}
-        {{ person.familyName }} {{ person.givenNames }}
-    </a>
-    {% endfor %}
-</div>
+{% assign roles = site.team | group_by: 'role' %}
+
+{% for title in site.team-roles %}
+{% assign role = roles | find: "name", title %}
+
+{% include team-role.html role=role %}
+{% endfor %}
