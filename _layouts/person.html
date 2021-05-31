@@ -14,25 +14,30 @@ layout: default
         {% endfor %}
     </ul>
     {% endif %}
-    
-    {% if page.orcData['activities-summary']['employments']['employment-summary'].size > 0 %}
+    {% if page.orcData['activities-summary']['employments']['affiliation-group'].size > 0 %}
     <h2>Employments:</h2>
     
-    {% for item in page.orcData['activities-summary']['employments']['employment-summary'] %}
-        <div>
-            {% include activity.html item=item %}
-        </div>
+    {% for group in page.orcData['activities-summary']['employments']['affiliation-group'] %}
+        {% for summary in group['summaries'] %}
+        {% assign item = summary['employment-summary'] %}
+            <div>           
+                {% include activity.html item=item %}
+            </div>
+        {% endfor %}
     {% endfor %}
 
     {% endif %}
-    {% if page.orcData['activities-summary']['educations']['education-summary'].size > 0 %}
+    {% if page.orcData['activities-summary']['educations']['affiliation-group'].size > 0 %}
     <h2>Education:</h2>
     
 
-    {% for item in page.orcData['activities-summary']['educations']['education-summary'] %}
-        <div>           
-            {% include activity.html item=item %}
-        </div>
+    {% for group in page.orcData['activities-summary']['educations']['affiliation-group'] %}
+        {% for summary in group['summaries'] %}
+        {% assign item = summary['education-summary'] %}
+            <div>           
+                {% include activity.html item=item %}
+            </div>
+        {% endfor %}
     {% endfor %}
 
     {% endif %}

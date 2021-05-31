@@ -1,12 +1,14 @@
 require 'net/http'
 require 'json'
 
+API_BASEURL = "https://pub.orcid.org/v3.0/"
+
 Jekyll::Hooks.register :site, :post_read do |site|
     if site.collections['team'] 
         site.collections['team'].docs.each do |person|
             if person.data['orcid']                
                 Jekyll.logger.info "Requesting ORCID Data for #{person.data['orcid']}"
-                uri = URI("https://pub.orcid.org/v2.1/#{person.data['orcid']}")
+                uri = URI("#{API_BASEURL}#{person.data['orcid']}")
                 request = Net::HTTP::Get.new(uri)
                 request["Accept"] = "application/json"
                 response = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => true) {|http|
