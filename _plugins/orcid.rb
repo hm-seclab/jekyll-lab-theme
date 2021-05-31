@@ -15,8 +15,24 @@ def handlePublications(orcData)
             }
             summaryData = JSON.load(summaryResponse.body)
             if summaryData['short-description'] == "seclab:pub"
-                Jekyll.logger.info "  - #{summary['path']} marked as lab publication"                
-                @publications.data['publications'].push(workGroup)
+                Jekyll.logger.info "  - #{summary['path']} marked as lab publication"
+                existing = false
+                summaryData['external-ids']['external-id'].each do |extId| 
+                    @publications.data['publications'].each do |pub|
+                        pub['external-ids']['external-id'].each do |id| 
+                            if id['external-id-value'] == extId['external-id-value'] && id['external-id-type'] == extId['external-id-type']
+                                existing = true
+                                break
+                            end
+                        end
+                        break if existing
+                    end
+                    break if existing
+                end
+
+                if ! existing
+                    @publications.data['publications'].push(workGroup)
+                end
                 break
             end
         end
