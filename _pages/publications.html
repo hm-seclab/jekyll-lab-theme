@@ -6,12 +6,13 @@ title: Publications
 
 <article class="prose max-w-none">
     <h1 class="title-font mb-4 font-medium">Our Publications</h1>
-    {% for item in page.publications %}
+    <ul>
+        {% for item in page.publications %}
 
-    <div>
-        {% include work.html item=item %}
-    </div>
+        <li>
+            {% include work.html item=item %}
+        </li>
 
-    {% endfor %}
-
+        {% endfor %}
+    </ul>
 </article>

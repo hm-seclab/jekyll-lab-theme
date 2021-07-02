@@ -1,7 +1,11 @@
+<div class="work">
 {% assign sorted-work-summary = item['work-summary'] | sort: "display-index" | reverse %}
+<p>
 {{ sorted-work-summary[0]['title']['title']['value']}} ({{ sorted-work-summary[0]['publication-date']['year']['value']}}) 
+</p>
 {% if item['external-ids']['external-id'].size > 0 %}
     {% for external in item['external-ids']['external-id'] %}
-        {{ external['external-id-type'] | upcase }}: {{ external['external-id-value'] }} 
+<p>    {{ external['external-id-type'] | upcase }}: {{ external['external-id-value'] }} </p>
     {% endfor %}
 {% endif %}
+</div>

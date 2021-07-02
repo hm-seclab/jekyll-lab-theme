@@ -3,7 +3,10 @@ layout: default
 ---
 <article class="prose max-w-none">
     <h1 class="title-font mb-4 font-medium">
-        {{ page.title }}
+        {{ page.title }} 
+        {% if page.github %}
+        <a class="github" href="{{ page.github }}"><img src="{{ "/assets/img/github.png" | relative_url }}"> </a>
+        {% endif %}
     </h1>
     {{ content }}
 </article>

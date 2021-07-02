@@ -53,3 +53,16 @@
   margin-bottom: 0;
   display: initial;
 }
+
+.prose .work p{
+  margin: 0;
+}
+.github img {
+  margin: 0;
+  display: inline;
+  height: 0.7em;
+  vertical-align: baseline;
+}
+.github {
+  margin: 0;
+}

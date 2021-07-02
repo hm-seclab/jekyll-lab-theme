@@ -11,6 +11,9 @@ collections:
   projects:
     output: true
     permalink: /:collection/:path/
+  oss-projects:
+    output: true
+    permalink: /:collection/:path/
 
 defaults:
   - scope:
@@ -18,6 +21,11 @@ defaults:
       type: team # select all person pages
     values:
       layout: person
+  - scope:
+      path: ""
+      type: oss-projects # select all project pages
+    values:
+      layout: project
   - scope:
       path: ""
       type: projects # select all project pages

@@ -5,7 +5,7 @@ title: Projects
 ---
 <div class="max-w-none">
     <div class="prose">
-        <h1 class="title-font mb-4 font-medium">Current Projects</h1>
+        <h1 class="title-font mb-4 font-medium">Research Projects</h1>
     </div>
     <div class="grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 gap-4">
         {% for project in site.projects %}
@@ -19,4 +19,21 @@ title: Projects
 
         {% endfor %}
     </div>
+    {% if site.oss-projects.size > 0 %}
+    <div class="prose py-4">
+        <h1 class="title-font mb-4 font-medium">Open Source Projects</h1>
+    </div>
+    <div class="grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 gap-4">
+        {% for project in site.oss-projects %}
+        <a class="" href="{{ project.url }}">
+            <div class="shadow-lg flex-none rounded-lg p-4 ">
+                <img class="object-contain h-52 w-full" src="{{ project.image }}">
+                <h2 class="font-semibold text-2xl"> {{ project.title }} </h2>
+                <p>{{ project.description }}</p>
+            </div>
+        </a>
+
+        {% endfor %}
+    </div>
+    {% endif %}
 </div>
