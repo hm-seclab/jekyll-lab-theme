@@ -3,3 +3,33 @@ layout: default
 permalink: /theses/
 title: Theses
 ---
+<article class="prose max-w-none">
+    <h1 class="title-font mb-4 font-medium">Theses</h1>
+
+    {% assign open-theses = site.theses | where: "year", empty %}
+    {% if open-theses.size > 0 %}
+    <h2>Open Topics</h2>
+
+    <ul class="list-none">
+        {% for thesis in open-theses %}
+        <li>
+            <span><b>{{ thesis.title }}:</b> {{ thesis.supervisor }} {% if thesis.type %}({{ thesis.type }}){% endif %}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% assign grouped-theses = site.theses | where_exp: "item", "item.year" | group_by: 'year' | sort: "name" | reverse %}
+    {% for item in grouped-theses %}
+    <h2>{{ item.name }}</h2>
+
+    <ul class="list-none">
+        {% for thesis in item.items | sort: "title" %}
+        <li>
+            <span><b>{{ thesis.title }}:</b> {{ thesis.student }}, {{ thesis.supervisor }} ({{ thesis.type }})</span>
+        </li>
+        {% endfor %}
+    </ul>
+
+
+    {% endfor %}
+</article>

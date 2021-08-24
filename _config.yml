@@ -64,6 +64,7 @@ exclude:
   - Dockerfile.dev
   - docker-compose.yml
   - docker-compose.dev.yml
+  - _theses/template.md
 
 team-roles:
   - Professor

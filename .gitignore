@@ -1,8 +1,4 @@
 _site/**
 .jekyll-cache/**
-_team/**.md
-_projects/**.md
-_publications/**.md
-_theses/**.md
 *.gem
 node_modules/**
