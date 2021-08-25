@@ -6,18 +6,24 @@ API_BASEURL = "https://pub.orcid.org/v3.0"
 def handlePublications(orcData)
     
     orcData['activities-summary']['works']['group'].each do |workGroup| 
-        workGroup['work-summary'].each do |summary| 
+        workGroup['work-summary'].map! do |summary| 
             uri = URI("#{API_BASEURL}#{summary['path']}")
             request = Net::HTTP::Get.new(uri)
             request["Accept"] = "application/json"
             summaryResponse = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => true) {|http|
                 http.request(request)
             }
-            summaryData = JSON.load(summaryResponse.body)
-            if summaryData['short-description'] == "seclab:pub"
+            summaryData = JSON.load(summaryResponse.body)  
+            summary['short-description'] = summaryData['short-description']
+            summary['external-ids'] = summaryData['external-ids']
+            summary['contributors'] = summaryData['contributors']
+            summary
+        end
+        workGroup['work-summary'].each do |summary|
+            if summary['short-description'] == "seclab:pub"
                 Jekyll.logger.info "  - #{summary['path']} marked as lab publication"
                 existing = false
-                summaryData['external-ids']['external-id'].each do |extId| 
+                summary['external-ids']['external-id'].each do |extId| 
                     @publications.data['publications'].each do |pub|
                         pub['external-ids']['external-id'].each do |id| 
                             if id['external-id-value'] == extId['external-id-value'] && id['external-id-type'] == extId['external-id-type']
@@ -37,6 +43,7 @@ def handlePublications(orcData)
             end
         end
     end
+    return orcData['activities-summary']['works']['group']
 end
 
 
@@ -67,7 +74,7 @@ Jekyll::Hooks.register :site, :post_read do |site|
                     person.data['image'] = image.relative_path 
                 end
 
-                handlePublications(orcData)
+                orcData['activities-summary']['works']['group'] = handlePublications(orcData)
 
             end
         end
