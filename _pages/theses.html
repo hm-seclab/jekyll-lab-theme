@@ -23,7 +23,8 @@ title: Theses
     <h2>{{ item.name }}</h2>
 
     <ul class="list-none">
-        {% for thesis in item.items | sort: "title" %}
+        {% assign sorted = item.items | sort: "title" %}
+        {% for thesis in sorted %}
         <li>
             <span><b>{{ thesis.title }}:</b> {{ thesis.student }}, {{ thesis.supervisor }} ({{ thesis.type }})</span>
         </li>
