@@ -8,6 +8,6 @@
     "cssnano": "^5.0.8",
     "postcss": "^8.3.9",
     "postcss-import": "^14.0.1",
-    "tailwindcss": "^2.2.16"
+    "tailwindcss": "^2.2.17"
   }
 }
