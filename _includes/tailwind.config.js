@@ -1,8 +1,10 @@
 module.exports = {
+  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
   },
-  
-  content: [`_site/**/*.html`],
+  variants: {
+    extend: {},
+  },
   plugins: [require("@tailwindcss/typography")],
 };
