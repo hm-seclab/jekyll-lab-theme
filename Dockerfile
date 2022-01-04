@@ -1,6 +1,6 @@
 FROM ruby
 
-RUN gem install bundler jekyll jekyll-postcss
+RUN gem install bundler jekyll
 
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
     apt install nodejs
@@ -10,7 +10,7 @@ COPY package.json package-lock.json Gemfile Gemfile.lock ./
 RUN  npm install && bundle install 
 ARG CACHEBUST=1
 COPY . .
-RUN JEKYLL_ENV=production bundle exec jekyll build
+RUN npm run build
 
 FROM nginx 
 

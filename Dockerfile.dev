@@ -1,6 +1,6 @@
 FROM ruby
 
-RUN gem install bundler jekyll jekyll-postcss
+RUN gem install bundler jekyll
 
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
     apt install nodejs
@@ -8,4 +8,4 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
 VOLUME [ "/app" ]
 EXPOSE 4000
 WORKDIR /app
-ENTRYPOINT [ "/bin/sh", "-c", "npm install && bundle install && JEKYLL_ENV=staging bundle exec jekyll serve -H 0.0.0.0 --force_polling --livereload --verbose" ]
+ENTRYPOINT [ "/bin/sh", "-c", "npm install && bundle install && npm run dev" ]

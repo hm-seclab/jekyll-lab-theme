@@ -5,6 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     restart: always
+    command: [ "/bin/sh", "-c", "npm install && bundle install && npm run dev" ]
     ports:
       - 4000:4000
       - 35729:35729
