@@ -14,7 +14,7 @@
     "cross-spawn": "7.0.3",
     "gulp": "4.0.2",
     "gulp-postcss": "9.0.1",
-    "cssnano": "^5.1.0",
+    "cssnano": "^5.1.1",
     "postcss": "^8.4.8",
     "postcss-import": "^14.0.1",
     "tailwindcss": "^3.0.23"
